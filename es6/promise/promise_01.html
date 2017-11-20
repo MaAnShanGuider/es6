@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var pms = new Promise(function(resolve,reject){
+		//异步操作成功
+		if(false){
+			resolve();
+		}//异步操作失败
+		else{
+			reject();
+		}
+
+	});
+
+	pms.then(function(){console.log('wocoanima')},function(){console.log('diuniloumou')}).then(()=>console.log('successed'),()=>console.log('failed'));
+
+	// pms.catch(function(){console.log('diuniloumou')})
+</script>
+</html>

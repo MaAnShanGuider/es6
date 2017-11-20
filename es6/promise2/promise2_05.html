@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	var p1 = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			resolve();
+			console.log('resolve延时器');},2000);
+		setTimeout(()=>{
+			reject();
+			console.log('reject延时器');},3000);
+	})
+p1.then(()=>console.log('resolve'))
+	.catch(()=>console.log('reject'))
+</script>
+</html>

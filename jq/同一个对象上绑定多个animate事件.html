@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		div{position: absolute;height: 100px;width: 100px;left: 0;}
+		#a{background: red;top:0;}
+		#b{background: green;top:150px;left:500px;}
+		#c{background: blue;top:300px;}
+		#d{background: yellow;top:450px;}
+	</style>
+</head>
+<body>
+	<div id="a"></div>
+	<div id="b"></div>
+	<div id="c"></div>
+	<div id="d"></div>
+</body>
+<script src="../jq/jquery-1.8.2.min.js"></script>
+<script>
+	$(function(){
+				$('#c').hover(function() {
+					$('#d').animate({left:300},3000);
+						$('#a').animate({left: 500},2000, function() {	
+							console.log('a段代码');
+						//-------当鼠标移入时执行a的移动，当a移动完成时，再运行下面的b的移动  ----a段
+									$('#b').animate({left: 0},5000);
+							});}, 
+							 function() {
+							 	$('#d').animate({left:0},3000);
+							 	console.log('b段代码');
+				//------------鼠标离开时，执行这个b的移动。---b段
+				$('#b').animate({left: 500},6000, function() {
+									$('#a').animate({left: 0},400);
+				});
+		});	
+	})
+
+	/*
+
+
+
+	也就是说，	去你妈的，jq中绑在同一个对象上的animate事件就是哪个先触发，哪个先执行，后面触发的
+	必须等前面被触发的执行完，再执行后面的。
+	d就是例子.
+	 */
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+/*
+	当某一个promise（例如：a）对象作为另一个promise（例如：b）对象的resolve()(提醒：
+	只是resolve()的参数，作为reject的参数的时候，无效)的参数时候，b的state状态由a决定，与a一样
+*/
+
+//-------当p2的state状态由p1决定
+/*
+注意，这时p1的状态就会传递给p2，也就是说，p1的状态决定了p2的状态。如果p1的状态是pending，那么p2的回调函数就会等待p1的状态改变；如果p1的状态已经是resolved或者rejected，那么p2的回调函数将会立刻执行。
+*/
+var p1 = new Promise(function (resolve, reject) {
+	// setTimeout(()=>{reject()},0);
+	resolve();
+});
+var p2 = new Promise(function (resolve, reject) {
+	resolve(p1);
+	// resolve();
+});
+p2.then(()=>{console.log('我是p2的then')}).catch(()=>{console.log('我是p2的catch')});
+p1.then(()=>{console.log('我是p1的then')}).catch((a='我是p1的catch')=>{console.log(a)});
+
+</script>
+</html>

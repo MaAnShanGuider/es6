@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj = {
+				_name : 'diu',
+				age : 28,
+				set name(name){this._name=name;},
+				get name(){return this._name;}
+
+	}
+	obj.name='diuniloumou';//set 小括号里的值是只能用等于
+	// 号来传参的。不能像一般普通函数一样,比如obj.name('xxx')
+	// ,这种写法是错误的。
+	console.log(obj._name);//diuniloumou
+	console.log(obj);//Object { _name: "diuniloumou", age: 28, name: Getter }
+
+
+	// setter:设置，当调用时，会把等于号后面的值传入setter函数，而不是等于号后面的赋值掩盖寄存器的名字。
+	// getter:读取 当调用时，会触发getter函数,有一个返回值。
+	//也就是说这个setter，getter这个东西不能更改？？？（持疑问）
+	// 还有一个就是寄存器的名字不能与对象的属性重名。不然会
+// 无限循环下去的。
+</script>
+</html>

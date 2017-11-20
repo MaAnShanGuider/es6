@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		div{width: 100px;height: 100px;float: left;margin: 10px;}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+function randomColor(){
+	return  'rgba('+Math.floor(Math.random()*(255+1))+','+Math.floor(Math.random()*(255+1))+','+Math.floor(Math.random()*(255+1))+',1)';
+}
+function createStr(str,color){
+		var newDiv = document.createElement('div');
+			newDiv.innerHTML = str;
+      		newDiv.style.backgroundColor = color;
+      		document.body.appendChild(newDiv);
+}
+function getNumber(){
+      var pms = new Promise((resolve,reject)=>{
+      	// clearTimeout(window.timer);
+      	// timer = setTimeout(function(){
+      		var rM = parseInt(Math.random()*10);   
+      		console.log(rM);
+      		if(rM>4){
+      			// console.log(rM);
+      			resolve();
+      		}
+      		else{
+      			// console.log(rM);
+      			reject();
+      		}
+      		
+      	// },1000)
+      })
+      return pms;
+}
+//在最初始的这个getNmunber()里，会执行29行。
+getNumber().then(()=>{
+			createStr("第一个resolve()",randomColor())			
+				// console.log('diu');
+			return getNumber();
+      	}).catch(()=>{
+      createStr("第一个reject()",'white')
+      	// console.log('草拟吗')
+			return getNumber();//返回的过程中这个getNumber()又运行了一次，所以里面的东西会在打印一次
+      	})/*.then(()=>{
+			createStr("第二个resolve()",randomColor())
+				console.log('diu')
+			return getNumber();
+      	}).catch(()=>{
+      createStr("第二个reject()",'white')
+      	// console.log('草拟吗')
+			return getNumber();
+      	}).then(()=>{
+			createStr("第三个resolve()",randomColor())
+				console.log('diu')
+			return getNumber();
+      	}).catch(()=>{
+      createStr("第三个reject()",'white')
+      	// console.log('草拟吗')
+			return getNumber();
+      	}).then(()=>{
+			createStr("第四个resolve()",randomColor())
+				console.log('diu')
+			return getNumber();
+      	}).catch(()=>{
+      createStr("第四个reject()",'white')
+      	// console.log('草拟吗')
+			return getNumber();
+      	}).then(()=>{
+			createStr("第五个resolve()",randomColor())
+				console.log('diu')
+			return getNumber();
+      	}).catch(()=>{
+      createStr("第五个reject()",'white')
+      	// console.log('草拟吗')
+			return getNumber();
+      	})*/
+      	
+
+</script>
+</html>

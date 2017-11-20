@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0;padding: 0}
+	div{height: 100px;width: 100px;position:absolute;left: 0;}
+</style>
+</head>
+<body>
+	
+</body>
+<script>
+	function Doom(){
+		this.create=function(){
+			for(var i = 0;i<4;i++){
+				this.newDiv = document.createElement('div');
+				this.newDiv.style.cssText = `background:rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)});top:${i*100}px`;
+				document.body.appendChild(this.newDiv);
+				this.change(this.newDiv,600)
+			}
+
+		}
+		this.change=function(dom,num){
+			var self = this;
+			dom.timer = setInterval(function(){
+				console.log(dom,num);
+				var a = dom.offsetWidth;
+				var speed = (num-a)/10;				
+				speed = Math.ceil(speed);
+				a += speed;
+				if(Math.abs(speed)<=1){
+					speed = 0;
+				}
+				if(a>=num){
+					a = num;
+				}
+				if(speed==0 && a == num){
+					clearInterval(dom.timer);
+					//---------这里会清除最后一个同名定时器，而不是当前的定时器					
+					//-----而之前的定时器都会仍旧执行下去.
+					console.log(dom.timer); 
+
+				}
+				dom.style.width = a + 'px'; 
+			},20)
+
+		}
+	}
+	new Doom().create();
+</script>
+</html>

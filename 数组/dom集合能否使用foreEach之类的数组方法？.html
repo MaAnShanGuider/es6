@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+<script>
+	var box = document.getElementById('box');
+	var boxDiv = box.getElementsByTagName('div');
+//------方法一
+	// Array.prototype.forEach(function(ele,i,array){
+	// 	console.log('aaa')
+	// 	console.log(this[i]);
+	// },boxDiv)
+//--------实践证明，方法一不行，只能用方法二的call来改变原型Array中的this指向
+
+// ------方法二
+	// Array.prototype.forEach.call(boxDiv,function(ele){
+	// 								console.log(ele)});
+
+
+//-------方法三，
+	['a','b'].forEach(function(ele,i,array){
+		console.log('aaa')
+		console.log(this[i]);
+	},boxDiv)
+//------新建了一个新的数组，输出结果可以，也就是说，forEach()的第二个参数可以不是数组，类数组也可以。
+//----------->arr1.forEach(function(ele,index,arr){},HTMLCollection);
+//----------->这里面只要arr1,与HTMLColection的length相同，那么，HTMLCollection是可以间接使用forEach()的。
+</script>
+</html>

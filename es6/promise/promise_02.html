@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise_02</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function boom(ms){
+	var pms = new Promise((resolve,reject)=>{
+		setTimeout(function(){reject()},ms);
+	})
+
+	return pms;
+}
+	boom(5000).then(function(){console.log("caonima");console.log(this)}).catch(function(){console.log('张学友')});
+</script>
+</html>

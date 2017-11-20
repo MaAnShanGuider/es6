@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var pro = new Promise((resolve,reject)=>{
+		var num = Math.floor(Math.random()*5)+2;
+		console.log(num);
+		if(num>4){
+			resolve();
+		}
+		else{
+			reject();
+		}
+	})
+
+	// 这里的pro如果在23行确定了promise.state
+	pro.then(function(){console.log("wocao");return pro;}).catch(function(){console.log("nima")});
+	console.log(pro)
+	pro.then(function(){console.log("wocao");return pro;}).catch(function(){console.log("nima")});
+	pro.then(function(){console.log("wocao");return pro;}).catch(function(){console.log("nima")});
+	pro.then(function(){console.log("wocao");return pro;}).catch(function(){console.log("nima")});
+	pro.then(function(){console.log("wocao");return pro;}).catch(function(){console.log("nima")});
+	pro.then(function(){console.log("wocao");return pro;}).catch(function(){console.log("nima")});
+		console.log(pro)
+</script>
+</html>

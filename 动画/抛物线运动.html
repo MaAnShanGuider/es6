@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		div{height: 100px;width: 100px;position: absolute;}
+		#box1{top:300px;left: 0px;background:red;}
+		#box2{top: 200px;left: 800px;background:green;}
+	
+	</style>
+</head>
+<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+<script>
+	var box1 = document.getElementById('box1');
+	var box2 = document.getElementById('box2');
+
+	//---抛物线函数: y = a*x^2+b*x+c  -->a,自己定义,b通过a求出来。(y-a*x^2)/x
+	//--------------y :y坐标
+	//--------------x :x坐标
+	//--------------a :开口方向
+	var a = 0.0005;//然后我们将b求出来。
+
+//-----初始坐标
+	var current = {
+		cX:box1.offsetLeft,
+		cY:box1.offsetTop
+	}
+
+//-------两个坐标之间的距离
+	var target = {
+		x : box2.offsetLeft - current.cX,
+		y : box2.offsetTop - current.cY
+	}
+	b = (target.y-a*Math.pow(target.x,2))/target.x;
+	console.log(b);
+	// -------运动函数
+	function animation(){
+		var distance = 0;
+		var timer = setInterval(function(){
+			// distance += 5;
+			distance += target.x/10;
+			//---------这里面的distance其实不是速度，而是位移量
+			var x = Math.ceil(distance) ; 
+			console.log(x)
+			var y = a*Math.pow(x,2)+b*x;
+			
+			if(	x>=target['x']){
+				x = target['x'];
+				y = target['y'];
+				clearInterval(timer);
+				console.log('diunilou')
+		}	
+			box1.style.left = current.cX + x + 'px';
+			box1.style.top = current.cY + y + 'px';
+		},30)
+	}
+	animation();
+</script>
+</html>

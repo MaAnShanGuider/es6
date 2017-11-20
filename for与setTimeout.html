@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding: 0;}
+		#box{width:400px;height: 400px;background: black;position: relative;margin: 0 auto;}
+		#mover{position: absolute;top: 0;left: 0;height: 30px;width: 50px;background: pink;}
+		#brick{position: absolute;bottom: 30px;height: 30px;width: 200px;background: green;}
+	</style>
+</head>
+<body>
+	<section id="box">
+		<div id="mover"></div>
+		<div id="brick"></div>
+	</section>
+</body>
+<script>
+	var box = document.getElementById('box');
+	var mover = document.getElementById('mover');
+	var brick = document.getElementById('brick');
+
+	function boxDown(dom){
+		var speed = 0;
+		dom.timer = setInterval(function(){
+			var nowTop = dom.offsetTop;
+				speed += 1;
+				nowTop += speed;
+				if(nowTop>=brick.offsetTop-dom.offsetHeight){
+					nowTop = brick.offsetTop-dom.offsetHeight;
+					clearInterval(dom.timer);
+				}
+				dom.style.top = nowTop + 'px';
+		},20)
+	}
+	boxDown(mover);
+	window.onkeydown=function(e){
+		var e = e || window.event;		
+	console.log(e.keyCode);
+	}
+</script>
+</html>

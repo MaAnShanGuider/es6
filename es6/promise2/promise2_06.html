@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	 var error = true;
+    function test(){
+        var promise = new Promise(function(resolve,reject){
+            setTimeout(function(){
+                if(!error){
+                    resolve("没错");
+                }else{
+                    reject("有错");
+                }
+            },4000)
+        });
+        promise.catch(function(error){
+            console.log("失败了:"+error)
+            return error;
+        })
+        return promise;
+    }
+    test().then(function(str){
+        console.log("成功了:"+str);
+    }).catch(()=>console.log('wocoanima'));
+</script>
+</html>

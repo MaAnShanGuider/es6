@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;margin: 0;
+		}
+		.main{
+			margin: auto;
+			height: 500px;
+			width: 300px;
+			box-shadow: 1px 1px 5px black;
+		}
+		#san{
+			height: 0;width: 0;margin: 100px auto;
+			border:20px solid transparent;
+			/*边框的宽度为20px,是指线的宽度！！！并不是指线的长度*/
+			border-top-color: #999;
+			transition:all 0.5s;
+		}
+		.main:hover #san{
+			/**/
+			/*transform-origin: 0 0;*/
+			transform-origin: 20px 10px;
+			transform: rotate(-180deg);
+		}
+	</style>
+</head>
+<body>
+	<!-- 在css中的transform里，border,padding,也是算在宽度内的，
+	也就是说，transform-origin:0 0;
+		指的是左上角，border的那一点。而不是content的左上角
+	 -->
+	 <div class="main">
+	 	<div id="san"></div>
+	 </div>
+	<script>
+		console.log('width:'+san.offsetWidth,'height:'+san.offsetHeight);
+	</script>
+</body>
+</html>

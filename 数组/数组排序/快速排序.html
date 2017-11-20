@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// var arr = [10,45,66,22,12,7,33,26,67,34,33,18];
+	// var arr = [10,45,66,22,12];
+	//--先以最左边的为基准，一个for循环当从左往右，找到比10大的就停下来，
+	//另一个for从右往左，找到比10小的就停下来，然后两个互换，
+	//接着他俩继续走，知道遇见相同的位置，然后把基准10和那个相遇的位置上的数互换。
+	// ------也就是说，换完之后的10的左边都是比10小的，右边都是比10大的，
+	// 接着开始下一轮循环
+/*		top: for(var i = 0;i<arr.length;i++){//----i代表大循环
+			for(var j = arr.length-1;j>=0;j++){
+				for(var k = 0;k<arr.length-1;k++){
+					if( k == j){
+						var temp = arr[j];
+						arr[j] = arr[i];
+						arr[i] = temp;
+						continue top;
+					}
+					else if(arr[j]>10 && arr[k] <10){
+						var temp = arr[j];
+						arr[j] = arr[k];
+						arr[k] = temp;
+					}
+				}
+			}
+		}
+
+		console.log(arr);
+		*/
+var arr = [10,5,6,7,3,2];
+		function quickSort(array){
+			function sort(prev, numsize){ //prev当前的左边的值的索引，numsize数组长度，flag当前的最左边的值
+				var nonius = prev;//最左边
+				var j = numsize -1;//最右边
+				var flag = array[prev];
+				if ((numsize - prev) > 1) {
+					while(nonius < j){  //--------------这是大循环
+						for(; nonius < j; j--){  //-------从右z往左走
+							if (array[j] < flag) {
+								array[nonius++] = array[j];　//---当检测到了小于基准值的时候，右往左的循环就停止。并且这个array[j]移动到这个基准值上。
+							
+								//记住此刻的j。
+								console.log(`第${prev}次：`+j);
+								break;
+							};
+						}
+							console.log(`第${prev}次：`+j);
+						for( ; nonius < j; nonius++){ //------从左往右走
+							if (array[nonius] > flag){
+								array[j--] = array[nonius];
+								break;
+							}
+						}
+					}
+					array[nonius] = flag;
+					sort(0, nonius);
+					sort(nonius + 1, numsize);
+				}
+			}
+			sort(0, array.length);
+			return array;
+		}
+
+    quickSort(arr);
+	console.log(arr);
+	</script>
+	</html>

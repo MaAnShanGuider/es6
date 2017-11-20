@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+		当Promise.resolve(参数)为固定值时，会作为then内的参数.
+	 */
+	var a = 'wocaonima';
+	var b = true;
+	var c = 999;
+	Promise.resolve(a).then(res=>console.log(res));
+	Promise.resolve(b).then(res=>console.log(res));
+	Promise.resolve(c).then(res=>console.log(res));
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+/*	function boom(){
+		return setTimeout(()=>{console.log('延时器被触发')},2000);
+	}
+
+	Promise.resolve(boom()).then((res)=>{console.log('我是resolve')});*/
+
+	function boom(){
+		return new  Promise((resolve,reject)=>{
+			setTimeout(()=>{console.log('haha');resolve();},2000);
+		})
+	}
+
+	boom().then(()=>{console.log('我是then')});
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+//-------p2的state状态由p1决定
+var p1 = new Promise((resolve,reject)=>{
+	setTimeout(()=>{
+		console.log('p1的');
+		reject(); //---这里是reject(),那么p2的state也是rejected,下面会执行catch;
+				//---这里是resolve(),那么p2的state也是resolved,下面会执行then;
+	},1000)
+	
+});
+var p2 = new Promise((resolve,reject)=>{
+	resolve(p1);
+});
+p2.then(()=>{console.log('p2的then')}).catch(()=>{console.log('p2的catch')});
+</script>
+</html>

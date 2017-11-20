@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+	margin:0;
+	padding:0;
+}
+	html{
+		background: yellow;
+		height: 2500px;
+	}
+	body{background: red;
+		height:50%;
+		width: 100%;
+	}
+	
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	// ---------------在没有滚动条的情况下，三者相等。
+	// -----------------有滚动条的时候，
+	// ------------------innerHeight == document.documentElement.clientHeight + 水平滚动条
+	// ------------------innerWidth == document.documentElement.clientWidth + 垂直滚动条
+
+	//------------document.documentElement.clientWH是可视区的大小，是html的大小。也就是窗口的大小，不包括滚动条可以拉伸之类的，事件:onresize
+
+
+	//document.body.clientHW是body标签的的宽高。记住了，他们之间没什么什么相关性，如果给body设置width:200%;
+	//-----------那么document.documentElement.clientWH是可视区的,
+	//-------document.body.clientWidth为document.documentElement.clientWidth的两倍。
+	var aX = window.innerHeight;
+	var aY = window.innerWidth; //window.innerHeight是获取window的整个最高对象的，所以window的这两个值是最大的，包括了滚动条
+	
+	//document.documentElement.clientHeight
+	var bX = document.documentElement.clientHeight;
+	var bY = document.documentElement.clientWidth;
+
+	var cX = document.body.clientHeight;
+	var cY = document.body.clientWidth;
+	window.onresize=()=>{		
+	console.log('innerHeight:'+aX,'innerWidth:'+aY);
+	console.log('documentElement.clientHeight:'+bX,'documentElement.clientWidth:'+bY);
+	console.log('body.clientHeight:'+cX,'body.clientWidth:'+cY);
+	}
+
+</script>
+</html>

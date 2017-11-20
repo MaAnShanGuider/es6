@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise_02</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var img=new Image();  
+    img.onload=function(){alert("img is loaded")};  
+    img.onerror=function(){alert("error!")};  
+    img.src="http://img.hb.aicdn.com/98eca720713d959105b73a0f17684dc8d20323d432052-MpisFX_fw236"; 
+    document.body.appendChild(img); 
+    function show(){alert("body is loaded");};  
+    window.onload=show;
+</script>
+</html>

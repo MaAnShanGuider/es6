@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise_08</title>
+</head>
+<body>
+<p>	关于than与catch</p>
+</body>
+<script>
+	var n =8;
+	function getPromise(){
+		var pms = new Promise((resolve,reject)=>{
+			console.log('dadada');
+
+			if(n==8){
+				n++;
+			resolve();}
+			else{
+				console.log(n);
+				reject();
+			}
+			
+		})
+		return pms;
+	};
+/*	getPromise().then(function(){
+		console.log('resolve');
+		return getPromise();//------这一步相当于从新生成了一个promise对象
+							// 然后执行下面的catch().
+							// 如果then()与catch()写在一起，那么这个返回值并不会
+							// 执行第二个函数。
+							// 不写在一次，就会执行第二个函数
+	}).catch(function(){
+			console.log('reject')});
+	//then(参数函数1，参数函数2)这样的写法与==>then(参数函数1).cantch(参数函数2)的写法，作用是不一样的。*/
+	//
+	//
+	getPromise().then(function(){
+		console.log('resolve');
+		return getPromise();},function(){
+			console.log('reject')});
+</script>
+</html>

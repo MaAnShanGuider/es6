@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box1">aaaaaaaaaaaaa</div>
+	<div id="box2">bbbbbbbbbbbb</div>
+	<div id="box3">ccccccccccccc</div>
+</body>
+<script>
+	var box1 = document.getElementById('box1');
+	var box2 = document.getElementById('box2');
+	var box3 = document.getElementById('box3');
+	// function boom(dom){
+	// 	dom.timer = setInterval(function(){
+	// 		console.log(dom.innerHTML);		//单独给不同的dom对象绑定同一个定时器，会同时运行。
+	// 	},1500)
+	// }
+	// boom(box1);
+	// boom(box2);
+	// boom(box3);
+
+
+
+	// box1.timer1=setInterval(function(){console.log(box1.innerHTML)},1500)
+	// box2.timer2=setInterval(function(){console.log(box2.innerHTML)},1500)  
+	// box3.timer3=setInterval(function(){console.log(box3.innerHTML)},1500)  
+	//------不同的dom对象绑定不同的定时器，也会同时执行代码，但是先后顺序不同，打印的顺序也是不同的。
+	
+
+	// box1.timer1=setInterval(function(){console.log(box1.innerHTML)},1500)
+	// box1.timer2=setInterval(function(){console.log(box2.innerHTML)},1500)  
+	// box1.timer3=setInterval(function(){console.log(box3.innerHTML)},1500)  
+	// ------同一个dom对象绑定不同的定时器，并不会覆盖，而是都同时执行。
+
+
+
+	box1.timer1=setInterval(function(){console.log(box1.innerHTML);clearInterval(box1.timer1)},1500)
+	box1.timer1=setInterval(function(){console.log(box2.innerHTML);clearInterval(box1.timer1)},1500)  
+	box1.timer1=setInterval(function(){console.log(box3.innerHTML);clearInterval(box1.timer1)},1500)  
+	console.log(box1.timer1)//-----打印4，即最后一个定时器的id。
+	// ----给同一个dom对象绑定同样名字，但是内部函数不同的的定时器，并不会覆盖，也会同时执行，。
+	// ---但是如果在某一个定时器里的内部函数写清除这个名字的定时器的话，只会清除最后一个定时器，
+	// ---而其他的同名定时器会仍旧运行.
+	// ---也就是说，定时器被声明就是一个独一无二的方法，即使名字相同，仍是独一无二。
+
+	//那么如果要清除其他的同名定时器该怎么办？
+	// ---每一个同名定时器被声明时，都会有一个id值，第一个定时器的id为2，第二个同名定时的id为3，一次进行下去，
+	// ----而打印，只会打印出最后一个的同名定时器的id。
+	// 清除时，只要clearInterval(该定时器的id值),就会清除该id值的定时器
+
+	/*-------现在开始加入clearInterval() */
+	// function boom(dom){
+	// 	dom.timer = setInterval(function(){
+	// 		console.log(dom.innerHTML);	
+	// 		clearInterval(dom.timer);	//单独给不同的dom对象绑定同一个定时器，会同时运行。
+	// 	},1500)
+	// }
+	// boom(box1);
+	// boom(box2);
+	// boom(box3);      //--------同时执行，但是只会打印一次
+
+
+	// function boom(dom){
+	// 	dom.timer = setInterval(function(){
+	// 		console.log(dom.timer);	
+	// 		clearInterval(box3.timer);	//单独给不同的dom对象绑定同一个定时器，会同时运行。
+	// 	},1500)
+	// }
+	// boom(box1);
+	// boom(box2);
+	// boom(box3);      //--------同时执行，但是只会打印出box1,box2,而box3的cccccccc不会被打印出来。
+		//-------结论，在预解析阶段，他们都被读取，然后执行时，clearInterval()会先于setInterval执行，然后
+		// ---清除掉预解析里面的setInterval().
+
+</script>
+</html>

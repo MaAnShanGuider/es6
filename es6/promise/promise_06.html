@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise_02</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var test = new Promise((resolve, reject) => {
+		reject(6666);
+		resolve(2333);
+
+	});
+	//---------reject(),resolve()这两个，谁在前，谁就被执行，另一个就不会被执行。
+
+	test.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => {
+		console.log(err)
+	});
+</script>
+</html>

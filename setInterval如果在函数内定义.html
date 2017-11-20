@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{position: absolute;height: 100px;width: 100px;
+			background: red;;left: 0;top: 100px;}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<button id="start">开始</button>
+	<button id="end">结束</button>
+</body>
+<script>
+	let box = document.getElementById('box');
+	let start = document.getElementById('start');
+	let end = document.getElementById('end');
+
+	function animation(){
+		console.log('2222')
+		timer = setInterval(function(){
+			console.log('3333');
+			box.style.top = box.offsetTop + 10 + 'px';
+		},300);
+	}
+	start.onclick =function(){
+		animation();
+		console.log('11111');
+	}
+	end.onclick = function(){
+
+		console.log(window.timer);
+		clearInterval(window.timer);
+	}
+</script>
+</html>

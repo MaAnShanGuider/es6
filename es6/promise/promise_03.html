@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise_02</title>
+</head>
+<body>
+	
+</body>
+<script>
+//promise对象新建后，就会立即执行
+let pms = new Promise((resolve,reject)=>{
+	console.log('先输出我');
+	resolve(); //resolve()是放到最后面执行的。
+	console.log('啦啦啦');
+});
+	console.log('再输出草');
+	setTimeout(()=>{console.log('then前的延时器');},0);
+	pms.then(()=>{console.log('最后输出resolve里的尼玛')});
+	setTimeout(()=>{console.log('then后的延时器');},2000);
+
+	/*
+	依次输出：
+			先输出我  
+			啦啦啦
+			再输出草  
+			最后输出resolve里的尼玛  ---->这说明resolve()再所有事件处理完之后，looptime执行前，执行resolve;
+			then前的延时器  
+			then后的延时器
+	*/
+</script>
+</html>

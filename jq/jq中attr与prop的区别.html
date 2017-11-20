@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box" data-id='wocaonima'></div>
+
+	<label for="btn">请按我<input type="checkbox"  name="btn" id="btn"></label>
+</body>
+<script src="jq/jquery-1.8.2.min.js"></script>
+<script>
+		/*	
+			console.log($('#box').attr('data-id')); //输出 'woconima'
+			console.log($('#box').prop('data-id')); //输出 'undefined'
+		*/
+	
+
+		/*		
+		 	$('#box').attr({'ddd':'sssssss'});
+			console.log($('#box').attr('ddd')); //输出 'sssssss'
+			console.log($('#box').prop('ddd')); //输出 'undefined'
+		*/
+/////////////////////////////////////////
+//--从上面可以得出结论，那就是attr()一般用于我们自己自定义的属性。 //
+//那我们再来看看prop的特点。                      //
+/////////////////////////////////////////
+	
+	$('#btn').attr({checked:false});
+		
+</script>
+</html>

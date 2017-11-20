@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圆周运动</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#box{position: absolute;height: 50px;width: 50px;background: red;top: 300px;left: 650px;border-radius: 50%;}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var box = document.getElementById('box');
+
+	var circleCenter = {x:300,y:600};
+	var r = box.offsetLeft - circleCenter.y;
+	//-----------圆周运动动画
+	//-------------核心思想：根据弧度来变化坐标
+
+	function animation(){
+			var rad = 0;
+			var timer = setInterval(function(){
+				var boxX = box.offsetLeft;
+				var boxY = box.offsetTop;
+				rad += Math.PI/10;
+				var disX = r*Math.cos(rad);
+				var disY = r*Math.sin(rad);
+				boxX = boxX - disX;
+				boxY = boxY + disY;
+				box.style.left = boxX + 'px';
+				box.style.top = boxY + 'px';
+			},40)
+	}
+	animation();
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise.then()的返回值</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		div{width: 100px;height: 100px;float: left;margin: 10px;}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+function randomColor(){
+	return  'rgba('+Math.floor(Math.random()*(255+1))+','+Math.floor(Math.random()*(255+1))+','+Math.floor(Math.random()*(255+1))+',1)';
+}
+function createStr(str,color){
+		var newDiv = document.createElement('div');
+			newDiv.innerHTML = str;
+      		newDiv.style.backgroundColor = color;
+      		document.body.appendChild(newDiv);
+}
+
+var rM = 9;
+function getNumber(){
+      var pms = new Promise((resolve,reject)=>{
+      	// clearTimeout(window.timer);
+      	// timer = setTimeout(function(){
+      		// var rM = parseInt(Math.random()*10);   
+      		// console.log(rM);
+      		rM--;
+      		console.log(rM);
+      		if(rM>=8){
+      			// console.log(rM);
+      			resolve();
+      		}
+      		else{
+      			// console.log(rM);
+      			reject();
+      		}
+      		
+      	// },1000)
+      })
+      return pms;
+}
+// getNumber();
+//在最初始的这个getNmunber()里，会执行29行。
+getNumber().then(function(){console.log('wocao');return getNumber()})//----------
+ .catch(function(){console.log('nima');return getNumber()})    	
+.then(function(){console.log('wocao');return getNumber()})//-------这一行不会执行，因为49行返回的新的promise对象，而且rM已经小于8了，
+ .catch(function(){console.log('nima');return getNumber()}) 
+ .then(function(){console.log('wocao');})//---------------
+ .catch(function(){console.log('nima');return getNumber()}) 
+ .then(function(){console.log('wocao');})//--------------
+ .catch(function(){console.log('nima');return getNumber()}) 
+ .then(function(){console.log('wocao');})//-------------------
+ .catch(function(){console.log('nima');return getNumber()}) 
+</script>
+</html>

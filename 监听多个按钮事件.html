@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#mover{position: absolute;top: 0;left: 0;height: 100px;width: 100px;background: green;}
+	</style>
+</head>
+<body>
+	<div id="mover"></div>
+</body>
+<script>
+	/*
+	这里面不是直接用keycode，而是将每一次的按下事件记录到一个对象recode中，键名为e.keyCode,键值为true
+	当onkeyup触发时，recode中的当前的e.keyCode的属性值改为false，
+	然后，当onkeydown触发时，会遍历recode，键值为true的键名(keyCode)的会调用运动函数.
+	 */
+	var mover = document.getElementById('mover');
+	var keyCodeRecode = {};
+	document.onkeydown=function(e){	
+		var e = e || window.event;
+		var key = e.keyCode;
+		keyCodeRecode[key] = true;
+		
+		for(let i in keyCodeRecode){
+			if(keyCodeRecode[i]){
+				blockMove(i,mover,2);
+			}
+		}
+
+
+	}
+	document.onkeyup=function(e){
+		var e = e || window.event;
+		var key = e.keyCode;
+		keyCodeRecode[key]=false;
+	}
+
+
+//////------动画
+	function blockMove(num,obj,speed){
+		if(num == 37){
+			obj.style.left = obj.offsetLeft - speed + 'px';
+		}
+		else if(num == 39){
+			obj.style.left = obj.offsetLeft + speed + 'px';
+		}
+		else if(num == 38){
+			obj.style.top = obj.offsetTop - speed + 'px';
+		}
+		else if(num == 40){
+			obj.style.top = obj.offsetTop + speed + 'px';
+		}
+	}
+</script>
+</html>

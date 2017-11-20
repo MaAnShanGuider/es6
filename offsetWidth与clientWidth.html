@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#box{height: 300px;width: 300px;border: 20px solid red;padding:10px;}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var box = document.getElementById('box');
+	console.log(box.offsetWidth); //340 ----------整体的包含border,padding,content
+	console.log(box.clientWidth); // 300----------不包含border。只有pading,content
+	console.log(box.clientLeft); // 20px---------左边框
+	console.log(box.offsetLeft);//  0---------左边框外侧距离父元素左边宽内侧之间的距离。
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h3>通过Object.create()来生成新的原型对象</h3>
+</body>
+<script>
+	function Car(des){
+		this.des = des;
+		this.color = "green";
+	}
+	Car.prototype.getInfo=function(){
+		return "猫的颜色："+this.color+"    猫的特点："+this.des;
+	}
+	var tom = Object.create(new Car('会说人话'));
+	tom.color = "blue";
+	console.log(tom.getInfo());
+
+	// Object.create()是什么？
+	// Object.create(proto[,propertiesObject])
+	// 是es5提出的一种新的对象创建方式，第一个参数是要继承
+	// 的原型，必须是对象，第二个参数是对象的属性描述符，可选的。
+	// 
+</script>
+</html>

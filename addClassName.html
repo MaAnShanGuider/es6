@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.top{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		.foot{
+			width: 50px;
+			height: 50px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var box = document.getElementById('box');
+	box.className = 'top foot';
+	console.log(box.className);
+</script>
+</html>

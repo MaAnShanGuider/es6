@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise_02</title>
+</head>
+<body>
+	
+</body>
+<script>
+    var pms = new Promise((resolve,reject)=>{
+    		var img=new Image();  
+			img.src = "http://img.hb.aicdn.com/98eca720713d959105b73a0f17684dc8d20323d432052-MpisFX_fw236";
+    	    img.onload=function(){resolve();document.body.appendChild(img);};  
+	        img.onerror=function(){console.log('图片加载失败');};  
+	        document.body.appendChild(img);
+	        console.log('wocao')
+    })
+	pms.then(function(){console.log('图片加载完成')},function(){console.log('图片加载失败')})
+</script>
+</html>

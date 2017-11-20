@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var a = 'wocao';
+	function foo(){
+		var a = 'nima';
+		function diu (){
+			console.log(this.a);//--------这个a是全局变量a
+		}
+		return diu;
+	}
+	foo()();//输出 'wocao'
+
+	function Doo(){
+		var a = 'nima';
+		function fiu (){
+			console.log(a);//--------这个a是父级作用域22行的a
+		}
+		return fiu;
+	}
+	Doo()();  // 'nima' 
+
+	//---------------------
+	/*
+		闭包函数内的this,会首先从自己的作用域里找变量，如果自己的作用域没有，
+	就会从全局变量里找，如果全局变量也没有，那么就会报错  SyntaxError: unterminated comment
+</script>
+</html>

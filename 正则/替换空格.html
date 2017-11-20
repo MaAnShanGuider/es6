@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = '   nnnn mmm   ';
+	// console.log(str);
+
+	function Boom(str){
+		var reg = /[a-zA-Z]+[^.][a-zA-Z]+/gi;
+		var arr = reg.exec(str);
+		return arr[0];
+	}
+	console.log(Boom(str));
+</script>
+</html>

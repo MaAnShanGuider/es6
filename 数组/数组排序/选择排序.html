@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var p = [1,45,66,22,12,7,33,26,67,34,33,18];
+ 
+// function sorrt(ary) {
+//     length = ary.length;
+//     for (var i = 0; i < length; i++) {
+//         _min = ary[i]
+//         k = i
+//         for (var j = i + 1; j < length; j++) {
+//             if (_min > ary[j]) {
+//                 _min = ary[j]
+//                 k = j
+//             }
+//         }
+//         ary[k] = ary[i]
+//         ary[i] = _min
+//     }
+//     return ary;
+// }
+// pp = sorrt(p);
+// alert(pp);
+
+
+//-----k是当前从左往右数已知的最小的值的索引，而a段的min是当前的值，
+//--------b段的min是已知的最小的值。
+//---然后内层for循环完，就会获得目前最小的值，以及最小的值的索引。
+	for(var i = 0;i<p.length;i++){
+		var min = p[i]; //-----a段min
+			k = i;
+		for(var j = i+1;j<p.length;j++){
+			if(min>p[j]){
+				min = p[j]; //----b段min
+				k = j;
+			}
+		}
+		//----内层循环完了，得到了最小值和最小值的索引。
+		//--------然后将这个最小值放到每一轮的i的这个位置
+		//因为前一个i的循环后，已经是索引值为i到最右边之间的最小值了.
+		var temp = p[i];
+		p[i] = p[k];
+		p[k] = temp;
+		
+		
+	}
+	console.log(p);
+</script>
+</html>

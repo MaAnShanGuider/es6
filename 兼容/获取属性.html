@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取到style里的属性</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<p id="show">11</p>
+</body>
+<script>
+	var box = document.getElementById('box');
+	var show = document.getElementById('show');
+
+	console.log(box.style.width) //不会输出任何东西
+	console.log('哈哈')
+	// console.log(window.getComputedStyle(box,null)["background-color"]) //火狐，chrome输出：rgb(0, 128, 0)
+	console.log(box.currentStyle['background-color']) //这个ele.currentStyle不能查到没写过的样式，也不能查到复合样式。
+</script>
+</html>

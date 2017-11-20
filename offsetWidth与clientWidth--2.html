@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#box{height: 2000px;width: 200px;background: red;position: absolute;top: -500px;left: 0;padding-top: 50px;border-top: 50px solid green;}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var box = document.getElementById('box');
+	console.log(box.clientHeight);//2050
+	console.log(box.offsetHeight);//2100
+
+//由此可见，client与offset的差别只是在于边框
+</script>
+</html>
