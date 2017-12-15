@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+		class Boom {
+			constructor(a,b){
+				this.a = a;
+				this.b = b;
+			}
+
+			wocao(){
+				console.log('a属性是:'+this.a);
+				console.log('b属性是:'+this.b);
+			}
+		}
+
+	class Doom extends Boom{
+		constructor(x,y,z){
+			//----调用父类的constructor方法
+			super(x,y);
+			this.c = z;
+		}
+
+		caonima(){
+			//----调用父类的wocao方法
+			super.wocao();
+			console.log('c属性是:'+this.c);
+		}
+	}
+
+	var xixi = new Doom('Alice','Bob','Cindy');
+	xixi.caonima();
+	//依次输出：
+    // 			a属性是:Alice 
+	// 			b属性是:Bob  
+	// 			c属性是:Cindy
+</script>
+</html>

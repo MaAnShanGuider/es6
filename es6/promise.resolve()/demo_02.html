@@ -8,18 +8,22 @@
 	
 </body>
 <script>
-/*	function boom(){
-		return setTimeout(()=>{console.log('延时器被触发')},2000);
+
+/*	String.prototype.then = () => {
+		console.log(this.toString() + '我是prototype的添加属性');
 	}
+	const p = Promise.resolve('Hello');
 
-	Promise.resolve(boom()).then((res)=>{console.log('我是resolve')});*/
+	p.then(function(s) {
+		console.log(s)
+	});*/
 
-	function boom(){
-		return new  Promise((resolve,reject)=>{
-			setTimeout(()=>{console.log('haha');resolve();},2000);
-		})
-	}
-
-	boom().then(()=>{console.log('我是then')});
+var str = '张学友';
+// var str = {name:'wocaonima'}
+str.then=function(){
+	console.log('我是对象本身的方法');
+}
+str.then();
+Promise.resolve(str).then((res)=>{console.log(res)});
 </script>
 </html>

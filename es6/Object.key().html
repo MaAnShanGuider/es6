@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let xixi = {wo:'aaa',cao:'bbb'};
+	let haha = ['aa','bb','cc'];
+
+	console.log(Object.keys(xixi));
+	//---['wo','cao'];
+	
+	console.log(Object.keys(haha));
+	//---['0','1'];
+	//
+	let arr = [1,2,3];
+	let arr2 = arr.reduce((sum,ele)=>{
+	
+		console.log('sum:'+sum,'ele:'+ele);
+		return sum+ele;
+	})
+	let arr3 = arr.reduce((sum,ele)=>{
+	
+		console.log('sum:'+sum,'ele:'+ele);
+		return sum+ele;
+	},0)
+	console.log(arr2);
+	console.log(arr3);
+</script>
+</html>

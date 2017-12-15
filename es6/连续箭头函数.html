@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<p>连续箭头函数就是像：</p>
+	<pre>const functionA = () => () => 123;</pre>
+	<b>要注意上面的箭头函数后面是没有大括号包裹的</b>
+	<p>可以理解成：</p>
+	<pre>
+		functionB = () => {
+		    return 123;
+		}
+		functionA = () => {
+		    return functionB;
+		}
+	</pre>
+	<p>只要从后面一层一层往前面剥就好了。</p>
+	<b>这也反映出，箭头函数自带return</b>
+</body>
+<script>
+	let Func1 =()=>11111;
+	let Func2 =()=>{11111};
+	console.log(Func1());  // -----------1111
+	console.log(Func2());  // ------------undefine
+	/*
+		箭头函数不写大括号，就会自带return。
+		写了大括号，就和普通函数一样，return得自己手写。
+	 */
+	
+
+	let a = '11';
+	let b = '22';
+	let foo = () =>(xixi,haha)=>{console.log(xixi,haha)};
+	foo()(a,b);
+</script>
+</html>
